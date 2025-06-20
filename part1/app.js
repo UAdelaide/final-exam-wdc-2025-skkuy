@@ -152,67 +152,11 @@ app.get('/api/dogs', async(req, res) => {
             SELECT d.name AS dog_name, d.size, u.username AS owner_username
             FROM Dogs d
             JOIN Users u ON d.owner_id = u.user_id
-            ORDER BY d.name
         `);
         res.json(rows);
 
     } catch (err) {
-    res.status(500).json({ error: ' /api/dogs' });
-    }
-
-});
-
-// /api/walkrequests/open
-app.get('/api/walkrequests/open', async(req, res) => {
-    try {
-        const [open] = await db.execute(`
-          SELECT
-            wr.request_id,
-            d.name AS dog_name,
-            wr.requested_time,
-            wr.duration_minutes,
-            wr.location,
-            u.username AS owner_username
-          FROM WalkRequests wr
-          JOIN Dogs d ON wr.dog_id = d.dog_id
-          JOIN Users u ON d.owner_id = u.user_id
-          WHERE wr.status = 'open'
-          ORDER BY wr.requested_time
-        `);
-        res.json(open);
-
-    } catch (err) {
-    res.status(500).json({ error: '/api/walkrequests/open' });
-    }
-
-});
-
-
-// /api/walkers/summary
-
-app.get('/api/walkrequests/summary', async(req, res) => {
-    try {
-        const [rows] = await db.execute(`
-          SELECT
-            u.username AS walker_username,
-            COUNT(wr.rating_id) AS total_ratings,
-            CASE
-              WHEN COUNT(wr.rating_id) > 0 THEN AVG(wr.rating)
-              ELSE NULL
-            END AS average_rating,
-            COUNT(DISTINCT wa.request_id) AS completed_walks
-          FROM Users u
-          LEFT JOIN WalkApplications wa ON u.user_id = wa.walker_id AND wa.status = 'accepted'
-          LEFT JOIN WalkRequests req ON wa.request_id = req.request_id AND req.status = 'completed'
-          LEFT JOIN WalkRatings wr ON req.request_id = wr.request_id AND wr.walker_id = u.user_id
-          WHERE u.role = 'walker'
-          GROUP BY u.user_id, u.username
-          ORDER BY u.username
-        `);
-        res.json(rows);
-
-    } catch (err) {
-    res.status(500).json({ error: '/api/walkrequests/summary' });
+    res.status(500).json({ error: 'Failed to fetch books' });
     }
 
 });
