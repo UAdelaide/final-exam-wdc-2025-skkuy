@@ -25,7 +25,9 @@ let db;
     });
 
     const sqlFile = fs.readFileSync(
-        path.json(_)
+        path.json(__dirname, "dogwalks.sql",
+            
+        )
     )
 
     // Create the database if it doesn't exist
