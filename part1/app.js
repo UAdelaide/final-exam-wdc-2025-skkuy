@@ -42,7 +42,10 @@ let db;
       database: 'DogWalkService'
     });
 
-    await db
+    await db.execute(
+        `
+        `
+    )
 
 
     } catch (err) {
