@@ -165,7 +165,7 @@ app.get('/api/dogs', async(req, res) => {
 // /api/walkrequests/open
 app.get('/api/walkrequests/open', async(req, res) => {
     try {
-        const [rows] = await db.execute(`
+        const [open] = await db.execute(`
           SELECT
             wr.request_id,
             d.name AS dog_name,
@@ -179,7 +179,7 @@ app.get('/api/walkrequests/open', async(req, res) => {
           WHERE wr.status = 'open'
           ORDER BY wr.requested_time
         `);
-        res.json(rows);
+        res.json(open);
 
     } catch (err) {
     res.status(500).json({ error: '/api/walkrequests/open' });
