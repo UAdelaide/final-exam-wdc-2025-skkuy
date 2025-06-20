@@ -356,17 +356,17 @@
                     </div>
                 </div>
 
-            <div class="actions">
-                <button class="btn btn-primary" @click = "loadNewDog">
-                    Get New Dog
-                </button>
+                <div class="actions">
+                    <button class="btn btn-primary" @click = "loadNewDog">
+                        Get New Dog
+                    </button>
 
-                <button class="btn btn-secondary" @click="showPopup = true">
-                    Request Walk
-                </button>
-            </div>
+                    <button class="btn btn-secondary" @click="showPopup = true">
+                        Request Walk
+                    </button>
+                </div>
 
-            <div v-if="showPopup" class="overlay" @click="closePopup"></div>
+                
             <div v-if="showPopup" class="popup">
                 <h3>Action Required</h3>
                 <p>This feature is coming soon!</p>
