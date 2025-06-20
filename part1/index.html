@@ -156,7 +156,8 @@
                                 this.generateDogDetails();
                             }
                         }catch(error){
-                            console.error('Error fetching dog')
+                            console.error('Error fetching dog:', error);
+                            this.dogImage
                         }
                     }
                 }
