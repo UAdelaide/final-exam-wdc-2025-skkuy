@@ -6,7 +6,8 @@ const app = express();
 
 const session = require('express-session');
 
-app
+app.use(session({
+    secret: 'your-secret-key',
 
 // Middleware
 app.use(express.json());
