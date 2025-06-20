@@ -190,7 +190,7 @@ app.get('/api/walkrequests/open', async(req, res) => {
 
 // /api/walkers/summary
 
-app.get('/api/walkrequests/open', async(req, res) => {
+app.get('/api/walkrequests/summary', async(req, res) => {
     try {
         const [rows] = await db.execute(`
           SELECT
@@ -206,7 +206,7 @@ app.get('/api/walkrequests/open', async(req, res) => {
           WHERE wr.status = 'open'
           ORDER BY wr.requested_time
         `);
-        res.json(open);
+        res.json(rows);
 
     } catch (err) {
     res.status(500).json({ error: '/api/walkrequests/open' });
