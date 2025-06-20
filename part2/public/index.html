@@ -90,7 +90,7 @@
                 errorMessage.value = data.error || 'Login failed. Please check your credentials.';
             }
           } catch (error) {
-            errorMessage.value = '';
+            errorMessage.value = 'Network error. Please try again later.';
           } finally {
             isLoading.value = false;
           }
