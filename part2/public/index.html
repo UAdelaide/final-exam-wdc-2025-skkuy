@@ -19,7 +19,9 @@
             <!-- Error messages-->
              <div v-if="message" class="alert alert-danger">{{ errormessage }}</div>
             <!-- Login Form -->
-            <form @submit.prevent="login"
+            <form @submit.prevent="login">
+              <div class="mb-3"
+            </form>
         </div>
       </div>
     </div>
