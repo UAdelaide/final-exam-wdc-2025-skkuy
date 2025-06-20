@@ -20,7 +20,10 @@
              <div v-if="message" class="alert alert-danger">{{ errormessage }}</div>
             <!-- Login Form -->
             <form @submit.prevent="login">
-              <div class="mb-3"
+              <div class="mb-3">
+                <label for="u" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" v-model="email" required>
+              </div>
             </form>
         </div>
       </div>
