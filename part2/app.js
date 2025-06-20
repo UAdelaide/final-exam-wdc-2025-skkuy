@@ -6,6 +6,7 @@ const app = express();
 
 const session = require('express-session');
 
+// Session middleware configuration
 app.use(session({
     secret: 'your-secret-key',
     resave: false,
