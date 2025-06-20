@@ -5,7 +5,6 @@ var logger = require('morgan');
 var mysql = require('mysql2/promise');
 var fs = require('fs');
 
-
 var app = express();
 
 app.use(logger('dev'));
