@@ -143,7 +143,11 @@
                 async mounted(){
                     await this.loadNewDog();
                 },
-                methods:
+                methods: {
+                    async loadNewDog(){
+                        this
+                    }
+                }
             })
         </script>
     </body>
