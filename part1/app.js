@@ -71,6 +71,6 @@ app.get('/', async (req, res) => {
 app.use(express.static(path.join(__dirname, 'public')));
 
 // /api/dogs
-app.get()
+app.get('/api/dogs')
 
 module.exports = app;
