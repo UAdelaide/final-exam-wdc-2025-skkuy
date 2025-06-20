@@ -171,8 +171,8 @@ app.get('/api/walkrequests/open', async(req, res) => {
             d.name AS dog_name,
             wr.requsted_time,
             wr.duration_minutes,
-            wr
-            d.size, u.username AS owner_username
+            wr.loction,
+            u.username AS owner_username
 
 
         `);
