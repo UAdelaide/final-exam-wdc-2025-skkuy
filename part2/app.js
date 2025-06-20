@@ -12,8 +12,9 @@ app.use(session({
     saveUninitialized: false,
     cookie: {
         secure: false, // Set to true if using HTTPS
-        maxAge: 1000 * 60 * 60 // 1 hour
+        maxAge: 24 * 60 * 60 * 1000 // 1 day
     }
+}));
 
 // Middleware
 app.use(express.json());
