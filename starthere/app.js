@@ -162,11 +162,11 @@ app.get('/api/dogs', async(req, res) => {
 
 });
 
-// /api/walkrequests/
+// /api/walkrequests/open
 app.get('/api/walkrequests/', async(req, res) => {
     try {
         const [rows] = await db.execute(`
-          
+
 
         `);
         res.json(rows);
