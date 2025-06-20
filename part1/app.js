@@ -26,7 +26,7 @@ let db;
 
     const sqlFile = fs.readFileSync(
         path.json(__dirname, "dogwalks.sql",
-            
+            'utf8'
         )
     )
 
