@@ -24,7 +24,7 @@ let db;
       password: '' // Set your MySQL root password
     });
 
-    const sql
+    const sqlFile = fs.readfileS
 
     // Create the database if it doesn't exist
     await connection.query('DROP DATABASE IF EXISTS DogWalkService;');
