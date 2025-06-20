@@ -41,8 +41,8 @@ let db;
       password: '',
       database: 'DogWalkService'
     });
-  }}
-);
+  }
+});
 
 // Route to return books as JSON
 app.get('/', async (req, res) => {
