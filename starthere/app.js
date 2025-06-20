@@ -174,7 +174,7 @@ app.get('/api/walkrequests/open', async(req, res) => {
             wr.loction,
             u.username AS owner_username
           FROM WalkRequests wr
-          JOIN Dogs
+          JOIN Dogs d ON wr.dog_id
 
 
         `);
