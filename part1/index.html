@@ -366,20 +366,20 @@
                     </button>
                 </div>
 
-                
-            <div v-if="showPopup" class="popup">
-                <h3>Action Required</h3>
-                <p>This feature is coming soon!</p>
-                <button class="btn btn-primary" @click="closePopup">
-                    OK
-                </button>
-            </div>
-
-            <div class="footer-banner">
-                <div class="banner-text">
-                    Best Dog Walking Service • Book Now • Special Offers Available • zzzrrreeecccsssb
+                <div v-if="showPopup" class="overlay" @click="closePopup"></div>
+                <div v-if="showPopup" class="popup">
+                    <h3>Action Required</h3>
+                    <p>This feature is coming soon!</p>
+                    <button class="btn btn-primary" @click="closePopup">
+                        OK
+                    </button>
                 </div>
-            </div>
+
+                <div class="footer-banner">
+                    <div class="banner-text">
+                        Best Dog Walking Service • Book Now • Special Offers Available • zzzrrreeecccsssb
+                    </div>
+                </div>
         </div>
         <script>
             const {createApp} = Vue;
