@@ -161,6 +161,6 @@ app.get('/api/dogs', async(req, res) => {
 
 });
 
-app.use
+// /api/walkrequests/
 
 module.exports = app;
