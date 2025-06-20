@@ -173,7 +173,7 @@ app.get('/api/walkrequests/open', async(req, res) => {
             wr.duration_minutes,
             wr.loction,
             u.username AS owner_username
-          FROM Walkrequests
+          FROM WalkRequests wr
 
 
         `);
