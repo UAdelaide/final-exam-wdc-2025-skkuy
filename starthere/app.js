@@ -148,12 +148,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 // /api/dogs
 app.get('/api/dogs', async(req, res) => {
     try {
-        const [dogs] = await db.execute(`
+        const [rows] = await db.execute(`
             SELECT d.name AS dog_name, d.size, u.username AS owner_username
             FROM Dogs d
             JOIN Users u ON d.owner_id = u.user_id
         `);
-        res.json(dogs);
+        res.json(rows);
 
     } catch (err) {
     res.status(500).json({ error: ' /api/dogs' });
@@ -172,7 +172,7 @@ app.get('/api/walkrequests/', async(req, res) => {
         res.json(rows);
 
     } catch (err) {
-    res.status(500).json({ error: ' /api/walkrequests/' });
+    res.status(500).json({ error: '/api/walkrequests/' });
     }
 
 });
