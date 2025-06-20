@@ -73,6 +73,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/api/dogs', async(req, res) => {
     try {
         const [rows] = await.db.execute(`
+            SELECT d.
             `)
     }
 
