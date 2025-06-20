@@ -9,7 +9,11 @@ const session = require('express-session');
 app.use(session({
     secret: 'your-secret-key',
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: {
+        secure: false, // Set to true if using HTTPS
+        maxAge: 1000 * 60 * 60 // 1 hour
+    }
 
 // Middleware
 app.use(express.json());
