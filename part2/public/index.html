@@ -63,7 +63,34 @@
         });
 
         //Login Handler Functions
-        async funtion
+        async function login(){
+          isLoading.value = true;
+          errorMessage.value = '';
+
+          try {
+            const response = await fetch('/api/login', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(loginForm.value)
+            });
+
+            if (!response.ok) {
+              throw new Error('Login failed');
+            }
+
+            const data = await response.json();
+            // Handle successful login (e.g., redirect or store token)
+            console.log('Login successful:', data);
+            window.location.href = '/dashboard'; // Redirect to dashboard
+
+          } catch (error) {
+            errorMessage.value = error.message || 'An error occurred during login';
+          } finally {
+            isLoading.value = false;
+          }
+        }
       }
     }).mount('#app');
   </script>
