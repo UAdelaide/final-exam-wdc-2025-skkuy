@@ -95,6 +95,13 @@
             isLoading.value = false;
           }
         }
+
+        return {
+          loginForm,
+          errorMessage,
+          isLoading,
+          login
+        };
       }
     }).mount('#app');
   </script>
