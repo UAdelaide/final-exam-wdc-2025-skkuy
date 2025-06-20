@@ -76,14 +76,7 @@
               body: JSON.stringify(loginForm.value)
             });
 
-            if (!response.ok) {
-              throw new Error('Login failed');
-            }
-
-            const data = await response.json();
-            // Handle successful login (e.g., redirect or store token)
-            console.log('Login successful:', data);
-            window.location.href = '/dashboard'; // Redirect to dashboard
+            
 
           } catch (error) {
             errorMessage.value = error.message || 'An error occurred during login';
