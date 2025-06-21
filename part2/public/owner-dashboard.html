@@ -123,9 +123,8 @@
             });
             if (res.ok) {
               // Redirect to the login homepage immediately
-              window.location.href = 'index.html';
+              window.location.href = '/';
             } else {
-              const data = await res.json();
               error.value = data.error || 'Logout failed';
             }
           } catch (err) {
