@@ -99,7 +99,11 @@
         async loadWalkRequests() {
           try {
             const res = await fetch('/api/walks');
-            if (res.ok) throw new Error('Failed to load walk requests');
+            if (res.ok) {
+              this.userDogs = await res.json();
+            } else {
+              throw new Error('Failed to load walk requests');
+            }
             this.walks = await res.json();
           } catch (err) {
             this.error = err.message;
