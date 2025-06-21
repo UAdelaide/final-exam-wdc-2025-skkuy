@@ -20,13 +20,15 @@
             <div class="mb-5">
               <h2 class="text-center mb-4 text-primary">All Registered Dogs</h2>
 
-              <div v-if="dogsLoading" class="text-center">
-                <div class="spinner-border" role="status">
+              <!-- Loading State -->
+              <div v-if="dogsLoading" class="text-center py-4">
+                <div class="spinner-border text-primary" role="status">
                   <span class="visually-hidden">Loading dogs...</span>
                 </div>
-                 <p class="mt-2">Loading dogs from database...</p>
+                <p class="mt-2">Loading dogs from database...</p>
               </div>
 
+              <!-- Dogs Table -->
               <div v-else-if="allDogs.length > 0">
                 <table class="table table-striped table-hover">
                   <thead class="table-dark">
@@ -62,6 +64,7 @@
                 </table>
               </div>
 
+              <!-- No Dogs Message -->
               <div v-else class="text-center py-4">
                 <p class="text-muted">No dogs found in the database.</p>
               </div>
@@ -69,9 +72,7 @@
 
             <hr class="my-5">
 
-            <p class="text-center text-secondary mb-4">
-              Please log in to access your dashboard.
-            </p>
+            <p class="text-center mb-4">Please log in to continue</p>
 
             <!-- Error and success messages -->
             <div v-if="errorMessage" class="alert alert-danger alert-dismissible fade show">
@@ -129,7 +130,11 @@
   </div>
 
   <script>
-    Vue.createApp({
+    console.log('Vue version:', Vue.version);
+
+    const { createApp } = Vue;
+
+    createApp({
       data() {
         return {
           errorMessage: '',
@@ -145,37 +150,76 @@
       },
 
       async mounted() {
-        await this.loadAllDogs(); /
+        console.log('Vue app mounted');
+        await this.loadAllDogs();
       },
 
       methods: {
         async loadAllDogs() {
-          try {
-            this.dogsLoading = true;
+          console.log('Loading dogs...');
+          this.dogsLoading = true;
+          this.errorMessage = '';
 
+          try {
+            console.log('Fetching dogs from /api/dogs');
             const dogsResponse = await fetch('/api/dogs');
+
+            if (!dogsResponse.ok) {
+              throw new Error(`Failed to fetch dogs: ${dogsResponse.status}`);
+            }
+
             const dogs = await dogsResponse.json();
+            console.log('Dogs received:', dogs);
+
+            if (!Array.isArray(dogs) || dogs.length === 0) {
+              console.log('No dogs found');
+              this.allDogs = [];
+              return;
+            }
 
             // Get a random dog photo
+            console.log(`Fetching ${dogs.length} random photos`);
             const photosResponse = await fetch(`https://dog.ceo/api/breeds/image/random/${dogs.length}`);
+
+            if (!photosResponse.ok) {
+              throw new Error('Failed to fetch photos from dog.ceo');
+            }
+
             const photosData = await photosResponse.json();
+            console.log('Photos received:', photosData);
 
             // Merge data
             this.allDogs = dogs.map((dog, index) => ({
               ...dog,
-              randomPhoto: photosData.message[index] || 'https://via.placeholder.com/80x80?text=No+Photo'
+              randomPhoto: photosData.message && photosData.message[index]
+                ? photosData.message[index]
+                : 'https://via.placeholder.com/80x80?text=No+Photo'
             }));
+
+            console.log('Final dogs data:', this.allDogs);
 
           } catch (error) {
             console.error('Error loading dogs:', error);
-            this.errorMessage = 'Failed to load dogs';
+            this.errorMessage = `Failed to load dogs: ${error.message}`;
+
+
+            this.allDogs = [
+              {
+                dog_name: 'Test Dog',
+                size: 'medium',
+                owner_username: 'test_owner',
+                randomPhoto: 'https://via.placeholder.com/80x80?text=Test+Dog'
+              }
+            ];
           } finally {
             this.dogsLoading = false;
+            console.log('Loading complete');
           }
         },
 
         // login
         async login() {
+          console.log('Login attempt');
           this.isLoading = true;
           this.errorMessage = '';
           this.successMessage = '';
@@ -207,24 +251,24 @@
               this.errorMessage = data.error || 'Login failed';
             }
           } catch (error) {
+            console.error('Login error:', error);
             this.errorMessage = 'Network error. Please try again.';
           } finally {
             this.isLoading = false;
           }
         },
 
-        // Size Badge Style
         getBadgeClass(size) {
-          switch(size) {
+          switch(size?.toLowerCase()) {
             case 'small': return 'bg-success';
-            case 'medium': return 'bg-warning';
+            case 'medium': return 'bg-warning text-dark';
             case 'large': return 'bg-danger';
             default: return 'bg-secondary';
           }
         },
 
-        // error handling for images
         handleImageError(index) {
+          console.log(`Image error for dog ${index}`);
           if (this.allDogs[index]) {
             this.allDogs[index].randomPhoto = 'https://via.placeholder.com/80x80?text=No+Image';
           }
