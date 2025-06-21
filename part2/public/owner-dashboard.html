@@ -104,9 +104,9 @@
           }
         },
 
-        async submitWalkRequest(requestId) {
+        async submitWalkRequest() {
           try {
-            const res = await fetch('/api/walks/${requestId}/apply', {
+            const res = await fetch('/api/walks', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ walker_id: this.user })
