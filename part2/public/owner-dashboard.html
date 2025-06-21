@@ -125,7 +125,7 @@
               // Redirect to the login homepage immediately
               window.location.href = '/';
             } else {
-              error.value = data.error || 'Logout failed';
+              this.error = 'Logout failed';
             }
           } catch (err) {
             console.error('Logout error:', err);
