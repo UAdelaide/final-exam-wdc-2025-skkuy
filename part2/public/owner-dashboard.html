@@ -95,7 +95,11 @@
 
         async applyToWalk(requestId) {
           try {
-            const res = await fetch('/api/walks/');
+            const res = await fetch('/api/walks/${requestId}/apply', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ walker_id: this.user })
+            });
             walks.value = await res.json();
           } catch (err) {
             error.value = 'Failed to load walk requests';
