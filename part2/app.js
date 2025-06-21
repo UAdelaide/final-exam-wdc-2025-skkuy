@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-const mysql = require('mysql2/promise');
 require('dotenv').config();
 
 const app = express();
@@ -9,7 +8,7 @@ const session = require('express-session');
 
 // Session middleware - added for login authentication
 app.use(session({
-    secret: 'your-secret-key', // change this to a secure s
+    secret: 'your-secret-key', // change this to a secure 
     resave: false,
     saveUninitialized: false,
     cookie: {
