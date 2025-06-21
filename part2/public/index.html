@@ -91,6 +91,7 @@
                 } else if (data.role === 'walker') {
                   window.location.href = 'walker-dashboard.html';
                 }
+              }, 1000);
             }else {
                 errorMessage.value = data.error || 'Login failed. Please check your credentials.';
             }
