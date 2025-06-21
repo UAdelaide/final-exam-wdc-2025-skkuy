@@ -176,7 +176,7 @@
             if (response.ok) {
               this.successMessage = data.message;
 
-              // 根据角色重定向
+              // Redirect by role
               setTimeout(() => {
                 if (data.user.role === 'owner') {
                   window.location.href = 'owner-dashboard.html';
@@ -194,7 +194,7 @@
           }
         },
 
-        // 尺寸徽章样式
+        // Size Badge Style
         getBadgeClass(size) {
           switch(size) {
             case 'small': return 'bg-success';
@@ -204,7 +204,7 @@
           }
         },
 
-        // 图片加载错误处理
+        // error handling for images
         handleImageError(index) {
           if (this.allDogs[index]) {
             this.allDogs[index].randomPhoto = 'https://via.placeholder.com/80x80?text=No+Image';
