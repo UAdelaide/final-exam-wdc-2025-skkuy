@@ -133,10 +133,11 @@
               error.value = '';
               window.location.href = 'index.html';
             } else {
-              const da
-              error.value = 'Logout failed';
+              const data = await res.json();
+              error.value = data.error || 'Logout failed';
             }
           } catch (err) {
+            const
             error.value = 'Logout failed';
           }
         }
