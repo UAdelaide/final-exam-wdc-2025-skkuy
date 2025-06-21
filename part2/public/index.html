@@ -131,10 +131,10 @@
             this.dogsLoading = true;
             const dogsResponse = await fetch('/api/dogs');
             const dogs = await dogsResponse.json();
+
             const photosResponse = await fetch(`https://dog.ceo/api/breeds/image/random/${dogs.length}`);
             const photosData = await photosResponse.json();
 
-            // Combine dogs with random photos
             this.allDogs = dogs.map((dog, index) => ({
               ...dog,
               randomPhoto: photosData.message[index] || 'https://via.placeholder.com/80x80?text=No+Photo'
