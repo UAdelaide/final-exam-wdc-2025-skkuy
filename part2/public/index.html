@@ -18,6 +18,7 @@
             <p class="text-center mb-4">Please log in to continue</p>
             <!-- Error messages-->
              <div v-if="message" class="alert alert-danger">{{ errormessage }}</div>
+            <div v-if="successMessage" class="alert alert-success">{{ successMessage }}</div>
             <!-- Login Form -->
             <form @submit.prevent="login">
               <div class="mb-3">
