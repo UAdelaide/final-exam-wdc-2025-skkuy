@@ -130,16 +130,14 @@
       },
 
       methods: {
-        // 修正：方法名和逻辑
         async loadAllDogs() {
           try {
             this.dogsLoading = true;
 
-            // 获取数据库中的狗狗数据
             const dogsResponse = await fetch('/api/dogs');
             const dogs = await dogsResponse.json();
 
-            // 获取随机狗狗照片
+            // Get a random dog photo
             const photosResponse = await fetch(`https://dog.ceo/api/breeds/image/random/${dogs.length}`);
             const photosData = await photosResponse.json();
 
