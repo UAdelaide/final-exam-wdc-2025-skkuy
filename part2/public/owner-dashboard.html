@@ -139,6 +139,9 @@
           } catch (err) {
             console.error('Logout error:', err);
             error.value = 'Logout failed';
+            setTimeout(() => {
+              window.location.href = 'index.html';
+            }, 2000);
           }
         }
 
