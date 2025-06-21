@@ -83,7 +83,7 @@
                       <div class="photo-container">
                         <img v-if="dog.photo"
                           :src="dog.photo"
-                          :alt="Photo of ${dog.dog_name}"
+                          :alt="'Photo of ' + dog.dog_name"
                           class="img-thumbnail rounded-circle"
                           style="width: 80px; height: 80px; object-fit: cover;"
                           @error="handlerImageError(index)">
