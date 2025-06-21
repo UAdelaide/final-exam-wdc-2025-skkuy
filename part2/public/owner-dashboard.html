@@ -105,7 +105,12 @@
             if (!res.ok) throw new Error(result.error || 'Application failed');
             this.message = result.message;
             this.error = '';
-            this.form = 
+            this.form = {
+              dog_id: '',
+              requested_time: '',
+              duration_minutes: '',
+              location: ''
+            };
             await this.loadWalkRequests();
           } catch (err) {
             this.error = err.message;
