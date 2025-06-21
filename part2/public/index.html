@@ -129,7 +129,8 @@
         async loadAllDogs() {
           try {
             this.dogsLoading = true;
-            const response = await fetch('/api/dogs');
+            const dogsResponse = await fetch('/api/dogs');
+            const dogs = await dogsResponse.json();
             if (response.ok) {
               this.dogs = await response.json();
               console.log('Dogs loaded:', this.dogs);
