@@ -145,7 +145,21 @@
           }
         },
 
-        a
+        async loadRandomPhotos() {
+          for (let i = 0; i < this.dogs.length; i++) {
+            try {
+              const response = await fetch('https://dog.ceo/api/breeds/image/random');
+              const data = await response.json();
+              if (data.status === 'success') {
+                this.$set ? this.$set(this.dogs[i], 'photo', data.message) :
+                           (this.dogs[i].photo = data.message);
+              } else {
+                this.dogs[i].photo = 'https://via.placeholder.com/80x80?text=No+Photo';
+              }
+            } catch (error) {
+              console.error('Error loading photo for dog:', this.dogs[i].dog_name);
+              this.dogs[i].photo = 'https://via.placeholder.com/80x80?text=Error';
+            }
 
 
         //Login Handler Functions
