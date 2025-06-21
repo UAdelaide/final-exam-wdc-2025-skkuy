@@ -106,7 +106,7 @@
             }
             this.walks = await res.json();
           } catch (err) {
-            this.error = err.message;
+            this.error = 'Failed to load walk requests';
           }
         },
 
