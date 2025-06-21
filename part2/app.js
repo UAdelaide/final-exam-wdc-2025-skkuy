@@ -8,7 +8,7 @@ const session = require('express-session');
 
 // Session middleware - added for login authentication
 app.use(session({
-    secret: 'your-secret-key', // change this to a secure secret
+    secret: 'your-secret-key', // change this to a secure s
     resave: false,
     saveUninitialized: false,
     cookie: {
