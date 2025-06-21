@@ -24,38 +24,6 @@
                 </div>
               </div>
 
-            <!-- Error messages-->
-            <div v-if="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
-            <div v-if="successMessage" class="alert alert-success">{{ successMessage }}</div>
-            <!-- Login Form -->
-            <form @submit.prevent="login">
-              <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input
-                  v-model="loginForm.username"
-                  type="text"
-                  class="form-control"
-                  id="username"
-                  required>
-              </div>
-              <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input
-                  v-model="loginForm.password"
-                  type="password"
-                  class="form-control"
-                  id="password" required>
-              </div>
-              <div class="d-grid">
-                <button type="submit" class="btn btn-primary" :disabled="isLoading">
-                  <span v-if="isLoading" class="spinner-border spinner-border-sm me-2" ></span>
-                  {{ isLoading ? 'Logging in...' : 'Log In' }}
-                </button>
-              </div>
-            </form>
-
-
-            <div v-if="dogs.length > 0" class="table-responsive">
               <table class="table table-striped table-hover">
                 <thead class="table-dark">
                   <tr>
@@ -99,6 +67,40 @@
                   </tr>
                 </tbody>
               </table>
+
+            <!-- Error messages-->
+            <div v-if="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+            <div v-if="successMessage" class="alert alert-success">{{ successMessage }}</div>
+            <!-- Login Form -->
+            <form @submit.prevent="login">
+              <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input
+                  v-model="loginForm.username"
+                  type="text"
+                  class="form-control"
+                  id="username"
+                  required>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input
+                  v-model="loginForm.password"
+                  type="password"
+                  class="form-control"
+                  id="password" required>
+              </div>
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary" :disabled="isLoading">
+                  <span v-if="isLoading" class="spinner-border spinner-border-sm me-2" ></span>
+                  {{ isLoading ? 'Logging in...' : 'Log In' }}
+                </button>
+              </div>
+            </form>
+
+
+            <div v-if="dogs.length > 0" class="table-responsive">
+
             </div>
           </div>
         </div>
