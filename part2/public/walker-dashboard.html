@@ -41,68 +41,76 @@
   </div>
 
   <script>
-    Vue.createApp({
-      data() {
-        const form = ref{
-          walks: [],
-          message: '',
-          error: '',
-          currentUser: null
-        };
-      },
-      async mounted() {
-        await this.loadWalkRequests();
-      },
-      methods: {
-        async loadWalkRequests() {
+    const { createApp, ref, onMounted } = Vue;
+
+    createApp({
+      setup() {
+        const walks = ref([]);
+        const message = ref('');
+        const error = ref('');
+        const user = 3;
+
+        async function loadWalkRequests() {
           try {
             const res = await fetch('/api/walks');
             if (!res.ok) throw new Error('Failed to load walk requests');
-            this.walks = await res.json();
+            walks.value = await res.json();
           } catch (err) {
-            this.error = err.message;
+            error.value = err.message;
           }
-        },
+        }
 
-        async applyToWalk(requestId) {
+        async function applyToWalk(requestId) {
           try {
-            const res = await fetch('/api/walks/${requestId}/apply', {
+            const res = await fetch(`/api/walks/${requestId}/apply`, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ walker_id: this.user })
+              body: JSON.stringify({ walker_id: user })
             });
             const result = await res.json();
 
             if (!res.ok) throw new Error(result.error || 'Application failed');
-            this.message = result.message;
-            this.error = '';
-            await this.loadWalkRequests();
+            message.value = result.message;
+            error.value = '';
+            await loadWalkRequests();
           } catch (err) {
-            this.error = err.message;
-            this.message = '';
+            error.value = err.message;
+            message.value = '';
           }
-        },
+        }
 
         // Logout function
-        async loadout() {
+        async function loadout() {
           try {
-            console.log('Logging out...');
-
             const res = await fetch('/api/users/logout', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' }
             });
             if (res.ok) {
-              // Redirect to the login homepage immediately
-              window.location.href = '/';
+              window.location.href = 'index.html';
             } else {
-              this.error = 'Logout failed';
+              error.value = 'Logout failed';
+              setTimeout(() => {
+                window.location.href = 'index.html';
+              }, 1500);
             }
           } catch (err) {
-            console.error('Logout error:', err);
-            this.error = 'Logout failed' + err.message;
+            console.error ('Logout error:', err);
+            window.location.href = 'index.html';
           }
         }
+
+        onMounted(() => {
+          loadWalkRequests();
+        });
+
+        return {
+          walks,
+          message,
+          error,
+          applyToWalk,
+          loadout
+        };
       }
     }).mount('#app');
   </script>
