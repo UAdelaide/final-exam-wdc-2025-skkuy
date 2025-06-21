@@ -103,9 +103,11 @@
             const result = await res.json();
 
             if (!res.ok) throw new Error(result.error || 'Application failed');
-            
+            this.message = result.message;
+            this.error = '';
+            await this.loadWalkRequests();
           } catch (err) {
-            error.value = 'Failed to load walk requests';
+            this.error = 'Failed to load walk requests';
           }
         }
 
