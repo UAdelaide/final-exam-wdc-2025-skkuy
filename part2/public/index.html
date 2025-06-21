@@ -131,17 +131,17 @@
             this.dogsLoading = true;
             const dogsResponse = await fetch('/api/dogs');
             const dogs = await dogsResponse.json();
-            if (response.ok) {
-              this.dogs = await response.json();
-              console.log('Dogs loaded:', this.dogs);
-              await this.loadRandomPhotos();
-            } else {
-              console.error('Failed to load dogs');
-              this.dogs = [];
-            }
+            const photosResponse = await fetch(`https://dog.ceo/api/breeds/image/random/${dogs.length}`);
+            const photosData = await photosResponse.json();
+
+            // Combine dogs with random photos
+            this.allDogs = dogs.map((dog, index) => ({
+              ...dog,
+              randomPhoto: photosData.message[index] || 'https://via.placeholder.com/80x80?text=No+Photo'
+            }));
           } catch (error) {
             console.error('Error loading dogs:', error);
-            this.dogs = [];
+            this.errorMessage = 'Failed to load dogs';
           } finally {
             this.dogsLoading = false;
           }
