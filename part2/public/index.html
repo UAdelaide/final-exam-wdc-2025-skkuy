@@ -71,7 +71,7 @@
                       <strong>{{ dog.dog_name }}</strong>
                     </td>
                     <td>
-                      <span class="">{{ dog.size }}</span>
+                      <span class="badge" :class>{{ dog.size }}</span>
                     </td>
                     <td>
                       <img v-if="dog.photo_url" :src="dog.photo_url" alt="Dog Photo" class="img-thumbnail" style="width: 100px; height: auto;">
