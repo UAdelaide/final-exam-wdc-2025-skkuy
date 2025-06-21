@@ -67,7 +67,7 @@
         async function login(){
           isLoading.value = true;
           errorMessage.value = '';
-          successMessage
+          successMessage.value = '';
 
           try {
             const response = await fetch('/api/users/login', {
