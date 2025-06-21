@@ -64,9 +64,8 @@
             } else {
               throw new Error('Failed to fetch current user');
             };
-            this.currentUser = await res.json();
           } catch (err) {
-            this.error = err.message;
+            this.error = 'F';
           }
         },
 
