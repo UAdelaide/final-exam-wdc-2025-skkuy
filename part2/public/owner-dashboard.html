@@ -133,23 +133,10 @@
             // Redirect to login page even if error occurs
             setTimeout(() => {
               window.location.href = 'index.html';
-            }, 2000);
+            }
           }
         }
-
-        onMounted(() => {
-          loadWalks();
-        });
-
-        return {
-          form,
-          walks,
-          message,
-          error,
-          applyToWalk,
-          logout
-        };
-      }
+        
     }).mount('#app');
   </script>
 
