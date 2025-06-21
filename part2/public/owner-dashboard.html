@@ -128,7 +128,9 @@
               headers: { 'Content-Type': 'application/json' }
             });
             if (res.ok) {
-              wa
+              walks.value = [];
+              message.value = '';
+              error.value = '';
             } else {
               error.value = 'Logout failed';
             }
