@@ -67,7 +67,9 @@
                 <tbody>
                   <tr v-for="(dog, idex) in dogs" :key="index">
                     <td>{{ index + 1 }}</td>
-                    <td>{{ dog.breed }}</td>
+                    <td>
+                      <strong>{{ dog.name }}</strong>
+                    </td>
                     <td>{{ dog.size }}</td>
                     <td>
                       <img v-if="dog.photo_url" :src="dog.photo_url" alt="Dog Photo" class="img-thumbnail" style="width: 100px; height: auto;">
