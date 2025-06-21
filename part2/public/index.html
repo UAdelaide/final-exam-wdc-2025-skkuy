@@ -90,7 +90,7 @@
                 // Clear message after 3 seconds
                 if (data.user.role === 'owner') {
                   window.location.href = 'owner-dashboard.html';
-                } else if (data.role === 'walker') {
+                } else if (data.user.role === 'walker') {
                   window.location.href = 'walker-dashboard.html';
                 }
               }, 1000);
