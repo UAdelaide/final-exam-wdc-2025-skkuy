@@ -86,7 +86,7 @@
                           :alt="Photo of ${dog.dog_name}"
                           class="img-thumbnail rounded-circle"
                           style="width: 80px; height: 80px; object-fit: cover;"
-                          @error="dog.photo = ''">
+                          @error="handlerImageError(index)">
                         <span v-else class="text-muted">No photo available</span>
                     </td>
                   </tr>
