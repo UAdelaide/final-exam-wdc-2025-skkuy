@@ -93,7 +93,7 @@
           }
         },
 
-        async function loadWalks() {
+        async applyToWalk(requestd) {
           try {
             const res = await fetch('/api/walks');
             walks.value = await res.json();
