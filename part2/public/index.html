@@ -89,9 +89,9 @@
                 window.location.href = 'walker-dashboard.html';
               }
             },1000);
-            }else {
+          }else {
                 errorMessage.value = data.error || 'Login failed. Please check your credentials.';
-            }
+          }
           } catch (error) {
             errorMessage.value = 'Network error. Please try again later.';
           } finally {
