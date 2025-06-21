@@ -160,7 +160,9 @@
               console.error('Error loading photo for dog:', this.dogs[i].dog_name);
               this.dogs[i].photo = 'https://via.placeholder.com/80x80?text=Error';
             }
-            await new Promise(resolve => setTimeout(resolve, 1000)); // Delay to avoid hitting API limits
+            await new Promise(resolve => setTimeout(resolve, 300)); // Delay to avoid hitting API limits
+          }
+          
 
 
         //Login Handler Functions
