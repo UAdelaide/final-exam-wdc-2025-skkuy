@@ -68,9 +68,9 @@
       methods: {
         //Login Handler Functions
         async login(){
-          this.isLoading.value = true;
-          this.errorMessage.value = '';
-          successMessage.value = '';
+          this.isLoading = true;
+          this.errorMessage = '';
+          this.successMessage = '';
 
           try {
             const response = await fetch('/api/users/login', {
