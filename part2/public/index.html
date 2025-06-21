@@ -14,9 +14,62 @@
       <div class="col-md-10">
         <div class="card">
           <div class="card-body">
+            <!-- 1. TITLE FIRST -->
             <h1 class="card-title text-primary text-center mb-4">Welcome to the Dog Walking Service!</h1>
 
-            <!-- All Registered Dogs Table -  -->
+            <!-- 2. LOGIN FORM SECOND -->
+            <div class="mb-5">
+              <!-- Error and success messages -->
+              <div v-if="errorMessage" class="alert alert-danger alert-dismissible fade show">
+                {{ errorMessage }}
+                <button type="button" class="btn-close" @click="errorMessage = ''"></button>
+              </div>
+              <div v-if="successMessage" class="alert alert-success alert-dismissible fade show">
+                {{ successMessage }}
+                <button type="button" class="btn-close" @click="successMessage = ''"></button>
+              </div>
+
+              <!-- Login Form -->
+              <form @submit.prevent="login">
+                <div class="mb-3">
+                  <label for="username" class="form-label">Username</label>
+                  <input
+                    v-model="loginForm.username"
+                    type="text"
+                    class="form-control"
+                    id="username"
+                    required
+                    placeholder="Enter your username">
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input
+                    v-model="loginForm.password"
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    required
+                    placeholder="Enter your password">
+                </div>
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-primary" :disabled="isLoading">
+                    <span v-if="isLoading" class="spinner-border spinner-border-sm me-2"></span>
+                    {{ isLoading ? 'Logging in...' : 'Log In' }}
+                  </button>
+                </div>
+              </form>
+
+              <!-- Demo accounts -->
+              <div class="mt-4 p-3 bg-light rounded">
+                <h6>Demo Credentials:</h6>
+                <small class="text-muted">
+                  <strong>Owner:</strong> alice123 / hashed123<br>
+                  <strong>Walker:</strong> bobwalker / hashed456
+                </small>
+              </div>
+            </div>
+
+            <!-- 3. DOGS TABLE THIRD -->
             <div class="mb-5">
               <h2 class="text-center mb-4 text-primary">All Registered Dogs</h2>
 
@@ -69,49 +122,6 @@
                 <p class="text-muted">No dogs found in the database.</p>
               </div>
             </div>
-
-            <hr class="my-5">
-            <h2 class="text-center mb-4 text-primary">Login to Continue</h2>
-
-            <!-- Error and success messages -->
-            <div v-if="errorMessage" class="alert alert-danger alert-dismissible fade show">
-              {{ errorMessage }}
-              <button type="button" class="btn-close" @click="errorMessage = ''"></button>
-            </div>
-            <div v-if="successMessage" class="alert alert-success alert-dismissible fade show">
-              {{ successMessage }}
-              <button type="button" class="btn-close" @click="successMessage = ''"></button>
-            </div>
-
-            <!-- Login Form -->
-            <form @submit.prevent="login">
-              <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input
-                  v-model="loginForm.username"
-                  type="text"
-                  class="form-control"
-                  id="username"
-                  required
-                  placeholder="Enter your username">
-              </div>
-              <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input
-                  v-model="loginForm.password"
-                  type="password"
-                  class="form-control"
-                  id="password"
-                  required
-                  placeholder="Enter your password">
-              </div>
-              <div class="d-grid">
-                <button type="submit" class="btn btn-primary" :disabled="isLoading">
-                  <span v-if="isLoading" class="spinner-border spinner-border-sm me-2"></span>
-                  {{ isLoading ? 'Logging in...' : 'Log In' }}
-                </button>
-              </div>
-            </form>
 
           </div>
         </div>
