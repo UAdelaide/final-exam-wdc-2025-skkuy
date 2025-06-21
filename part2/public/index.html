@@ -81,7 +81,10 @@
                     <td>{{ dog.owner_username }}</td>
                     <td>
                       <div class="photo-container">
-                        <img v-if="dog.photo" :src="dog.photo" :alt="Photo of ${dog.dog_name}" class="img-fluid rounded">
+                        <img v-if="dog.photo"
+                          :src="dog.photo"
+                          :alt="Photo of ${dog.dog_name}"
+                          class="img-th rounded">
                         <span v-else class="text-muted">No photo available</span>
                     </td>
                   </tr>
