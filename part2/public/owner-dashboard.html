@@ -105,6 +105,7 @@
             if (!res.ok) throw new Error(result.error || 'Application failed');
             this.message = result.message;
             this.error = '';
+            this.form = 
             await this.loadWalkRequests();
           } catch (err) {
             this.error = err.message;
