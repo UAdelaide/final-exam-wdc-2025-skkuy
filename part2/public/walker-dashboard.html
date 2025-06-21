@@ -58,7 +58,11 @@
         async getCurrentUser() {
           try {
             const res = await fetch('/api/users/me');
-            if (!res.ok) throw new Error('Failed to load user data');
+            if (res.ok) {
+              this.currentUser = await res.json();
+            } else {
+              throw new Error('Failed to fetch current user');
+            };
             this.currentUser = await res.json();
           } catch (err) {
             this.error = err.message;
