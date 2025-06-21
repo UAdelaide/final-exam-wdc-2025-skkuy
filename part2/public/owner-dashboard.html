@@ -107,7 +107,8 @@
             this.error = '';
             await this.loadWalkRequests();
           } catch (err) {
-            this.error = 'Failed to load walk requests';
+            this.error = err.message;
+            this.message = '';
           }
         }
 
