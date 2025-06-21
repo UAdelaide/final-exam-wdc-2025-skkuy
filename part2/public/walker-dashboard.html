@@ -43,12 +43,12 @@
   <script>
     Vue.createApp({
       data() {
-        const form = ref({
+        return {
           walks: [],
           message: '',
           error: '',
           user: 3
-        });
+        };
       },
       async mounted() {
         await this.loadWalkRequests();
