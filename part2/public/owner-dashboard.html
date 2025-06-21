@@ -125,10 +125,9 @@
           try {
             const res = await fetch('/api/users/logout', {
               method: 'POST',
-              headers: { 'Content-Type': 'application/json' }
             });
             if (res.ok) {
-              window.location.href = '/index.html';
+              window.location.href = 'index.html';
             } else {
               const result = await res.json();
               error.value = result.error || 'Logout failed';
@@ -137,7 +136,7 @@
             error.value = 'Network error during logout';
           }
         }
-        
+
         onMounted(() => {
           loadWalks();
         });
