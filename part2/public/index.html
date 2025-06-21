@@ -73,7 +73,8 @@
                     <td>
                       <span class="badge" :class="{
                         'bg-success': dog.size === 'small',
-                        'bg-warning': god.si}">{{ dog.size }}</span>
+                        'bg-warning': god.size === 'medium'
+                      }">{{ dog.size }}</span>
                     </td>
                     <td>
                       <img v-if="dog.photo_url" :src="dog.photo_url" alt="Dog Photo" class="img-thumbnail" style="width: 100px; height: auto;">
