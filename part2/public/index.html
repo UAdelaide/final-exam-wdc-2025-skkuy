@@ -85,13 +85,12 @@
               successMessage.value = data.message;
               //Redirection by Role
               setTimeout(() => {
-                successMessage.value = '';
-              }, 3000); // Clear message after 3 seconds
-              if (data.role === 'owner') {
-                window.location.href = 'owner-dashboard.html';
-              } else if (data.role === 'walker') {
-                window.location.href = 'walker-dashboard.html';
-              }
+                // Clear message after 3 seconds
+                if (data.role === 'owner') {
+                  window.location.href = 'owner-dashboard.html';
+                } else if (data.role === 'walker') {
+                  window.location.href = 'walker-dashboard.html';
+                }
             }else {
                 errorMessage.value = data.error || 'Login failed. Please check your credentials.';
             }
