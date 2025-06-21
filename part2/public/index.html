@@ -126,8 +126,9 @@
       },
 
       methods: {
-        async loadDogs() {
+        async loadAllDogs() {
           try {
+            this.dogsLoading = true;
             const response = await fetch('/api/dogs');
             if (response.ok) {
               this.dogs = await response.json();
