@@ -61,11 +61,11 @@
                     <th scope="col">Name</th>
                     <th scope="col">Size</th>
                     <th scope="col">Owner</th>
-                    <th scope="col">Breed</th>
+                    <th scope="col">Photo</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="dog in dogs" :key="dog.id">
+                  <tr v-for="(dog in dogs" :key="dog.id">
                     <td>{{ dog.name }}</td>
                     <td>{{ dog.breed }}</td>
                     <td>{{ dog.size }}</td>
