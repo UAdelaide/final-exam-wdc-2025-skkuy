@@ -141,6 +141,7 @@
           } catch (err) {
             console.error('Logout error:', err);
             error.value = 'Logout failed';
+            // Redirect to login page even if error occurs
             setTimeout(() => {
               window.location.href = 'index.html';
             }, 2000);
