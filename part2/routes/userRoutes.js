@@ -81,8 +81,7 @@ router.get('/me/dogs', async(req, res) => {
       SELECT dog_id, name, size FROM Dogs
       WHERE owner_id = ?
       ORDER BY name
-      
-    `, [userId]);
+    `, [req.session.user.user_id]);
 
     res.json(rows);
   } catch (error) {
