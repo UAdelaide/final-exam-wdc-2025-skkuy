@@ -102,7 +102,7 @@
             if (res.ok) {
               this.userDogs = await res.json();
             } else {
-              throw new Error('Failed to load walk requests');
+              throw new Error('Failed to load dogs');
             }
             this.walks = await res.json();
           } catch (err) {
