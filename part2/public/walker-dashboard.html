@@ -65,7 +65,8 @@
               throw new Error('Failed to fetch current user');
             };
           } catch (err) {
-            this.error = 'F';
+            this.error = 'Failed to load user data: ' + err.message;
+            return null;
           }
         },
 
@@ -80,6 +81,7 @@
         },
 
         async applyToWalk(requestId) {
+          if
           try {
             const res = await fetch('/api/walks/${requestId}/apply', {
               method: 'POST',
