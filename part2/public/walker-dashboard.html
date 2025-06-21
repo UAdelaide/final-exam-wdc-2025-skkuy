@@ -81,7 +81,10 @@
         },
 
         async applyToWalk(requestId) {
-          if
+          if (!this.currentUser) {
+            this.error = 'You must be logged in to apply for a walk';
+            return;
+          }
           try {
             const res = await fetch('/api/walks/${requestId}/apply', {
               method: 'POST',
