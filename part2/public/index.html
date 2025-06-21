@@ -75,11 +75,11 @@
                         'bg-success': dog.size === 'small',
                         'bg-warning': dog.size === 'medium'
                         'bg-danger': dog.size === 'large'}">
-                        {{ dog.size }}</span>
+                        {{ dog.size }}
+                      </span>
                     </td>
                     <td>
-                      <img v-if="dog.photo_url" :src="dog.photo_url" alt="Dog Photo" class="img-thumbnail" style="width: 100px; height: auto;">
-                      <span v-else>No Photo Available</span>
+                      
                     </td>
                   </tr>
                 </tbody>
