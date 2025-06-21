@@ -100,6 +100,7 @@
                 errorMessage.value = data.error || 'Login failed. Please check your credentials.';
             }
           } catch (error) {
+            console.error('Login error:', error);
             errorMessage.value = 'Network error. Please try again later.';
           } finally {
             isLoading.value = false;
