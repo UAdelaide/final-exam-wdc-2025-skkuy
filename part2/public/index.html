@@ -41,12 +41,10 @@
                       <strong>{{ dog.dog_name }}</strong>
                     </td>
                     <td>
-                      <span class="badge" :class="{
-                        'bg-success': dog.size === 'small',
-                        'bg-warning': dog.size === 'medium',
-                        'bg-danger': dog.size === 'large'}">
-                        {{ dog.size }}
-                      </span>
+                      <img :src="dog.randomPhoto"
+                           :alt="dog.dog_name + ' photo'"
+                           class="img-thumbnail"
+                           style="width: 80px; height: 80px; object-fit: cover;">
                     </td>
                     <td>{{ dog.owner_username }}</td>
                     <td>
