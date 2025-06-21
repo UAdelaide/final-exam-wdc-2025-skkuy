@@ -73,11 +73,12 @@
     Vue.createApp({
       data() {
         const form = ref({
-          dog_id: '',
-          requested_time: '',
-          duration_minutes: '',
-          location: ''
+          walks: [],
+          message: '',
+          error: '',
+          user: 3
         });
+      },
 
         const walks = ref([]);
         const message = ref('');
