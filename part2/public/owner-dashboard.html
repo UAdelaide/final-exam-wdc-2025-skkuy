@@ -79,7 +79,8 @@
           user: 3
         });
       },
-      async mount
+      async mounted() {
+        await this.loadWalks();
 
         const walks = ref([]);
         const message = ref('');
