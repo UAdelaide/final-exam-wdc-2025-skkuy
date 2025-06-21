@@ -83,10 +83,15 @@
         await this.loadWalkRequests();
       },
       methods: {
-
-        const walks = ref([]);
-        const message = ref('');
-        const error = ref('');
+        async loadWalkRequests() {
+          try {
+            const res = await fetch('/api/walks');
+            if (!res.ok) throw new Error('Failed to load walk requests');
+            this.walks = await res.json();
+          } catch (err) {
+            this.error = err.message;
+          }
+        },
 
         async function loadWalks() {
           try {
