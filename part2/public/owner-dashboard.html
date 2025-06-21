@@ -93,9 +93,9 @@
           }
         },
 
-        async applyToWalk(requestd) {
+        async applyToWalk(requestId) {
           try {
-            const res = await fetch('/api/walks');
+            const res = await fetch('/api/walks/');
             walks.value = await res.json();
           } catch (err) {
             error.value = 'Failed to load walk requests';
