@@ -84,7 +84,7 @@
             const data = await response.json();
 
             if (response.ok){
-              successMessage.value = data.message;
+              this.successMessage = data.message;
               //Redirection by Role
               setTimeout(() => {
                 // Clear message after 3 seconds
