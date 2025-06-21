@@ -52,9 +52,19 @@
       },
       async mounted() {
         await this.loadWalkRequests();
-        await this.get(); // Load user data if needed
+        await this.getCurrentUser(); // Load user data if needed
       },
       methods: {
+        async getCurrentUser() {
+          try {
+            const res = await fetch('/api/users/me');
+            if (!res.ok) throw new Error('Failed to load user data');
+            this.currentUser = await res.json();
+          } catch (err) {
+            this.error = err.message;
+          }
+        },
+
         async loadWalkRequests() {
           try {
             const res = await fetch('/api/walks');
