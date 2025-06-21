@@ -100,7 +100,10 @@
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ walker_id: this.user })
             });
-            walks.value = await res.json();
+            const result = await res.json();
+
+            if (!res.ok) throw new Error(result.error || 'Application failed');
+            
           } catch (err) {
             error.value = 'Failed to load walk requests';
           }
