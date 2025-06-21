@@ -73,8 +73,15 @@
     Vue.createApp({
       data() {
         return{
-          
-
+          form: {
+            dog_id: '',
+            requested_time: '',
+            duration_minutes: '',
+            location: ''
+          },
+          walks: [],
+          message: '',
+          error: '',
         }
 
       },
