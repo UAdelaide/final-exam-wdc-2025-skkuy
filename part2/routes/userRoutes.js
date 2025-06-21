@@ -88,5 +88,5 @@ router.get('/me/dogs', async(req, res) => {
     console.error('Error fetching user dogs:', error);
     res.status(500).json({ error: 'Failed to fetch user dogs' });
   }
-}
+});
 module.exports = router;
