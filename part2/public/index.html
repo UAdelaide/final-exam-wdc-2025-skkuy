@@ -65,11 +65,11 @@
           }
         };
       },
-      method: {
+      methods: {
         //Login Handler Functions
         async login(){
-          isLoading.value = true;
-          errorMessage.value = '';
+          this.isLoading.value = true;
+          this.errorMessage.value = '';
           successMessage.value = '';
 
           try {
