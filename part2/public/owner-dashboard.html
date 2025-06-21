@@ -137,7 +137,7 @@
               error.value = data.error || 'Logout failed';
             }
           } catch (err) {
-            const
+            console.error('Logout error:', err);
             error.value = 'Logout failed';
           }
         }
