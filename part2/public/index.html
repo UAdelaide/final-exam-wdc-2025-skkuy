@@ -147,7 +147,46 @@
           }
         },
 
-        
+        async login() {
+          this.isLoading = true;
+          this.errorMessage = '';
+          this.successMessage = '';
+
+          try {
+            const response = await fetch('/api/users/login', {
+              method: 'POST',
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify({
+                username: this.loginForm.username,
+                password: this.loginForm.password
+              })
+            });
+
+            const data = await response.json();
+
+            if (response.ok){
+              this.successMessage = data.message;
+              //Redirection by Role
+              setTimeout(() => {
+                // Clear message after 3 seconds
+                if (data.user.role === 'owner') {
+                  window.location.href = 'owner-dashboard.html';
+                } else if (data.user.role === 'walker') {
+                  window.location.href = 'walker-dashboard.html';
+                }
+              }, 1000);
+            }else {
+                this.errorMessage = data.error || 'Login failed. Please check your credentials.';
+            }
+          } catch (error) {
+            console.error('Login error:', error);
+            this.errorMessage = 'Network error. Please try again later.';
+          } finally {
+            this.isLoading = false;
+          }
+        }
+
+
 
         async loadRandomPhotos() {
           for (let i = 0; i < this.dogs.length; i++) {
@@ -186,39 +225,7 @@
 
 
 
-          try {
-            const response = await fetch('/api/users/login', {
-              method: 'POST',
-              headers: {'Content-Type': 'application/json'},
-              body: JSON.stringify({
-                username: this.loginForm.username,
-                password: this.loginForm.password
-              })
-            });
 
-            const data = await response.json();
-
-            if (response.ok){
-              this.successMessage = data.message;
-              //Redirection by Role
-              setTimeout(() => {
-                // Clear message after 3 seconds
-                if (data.user.role === 'owner') {
-                  window.location.href = 'owner-dashboard.html';
-                } else if (data.user.role === 'walker') {
-                  window.location.href = 'walker-dashboard.html';
-                }
-              }, 1000);
-            }else {
-                this.errorMessage = data.error || 'Login failed. Please check your credentials.';
-            }
-          } catch (error) {
-            console.error('Login error:', error);
-            this.errorMessage = 'Network error. Please try again later.';
-          } finally {
-            this.isLoading = false;
-          }
-        }
 
 
       }
