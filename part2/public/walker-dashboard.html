@@ -41,12 +41,15 @@
   </div>
 
   <script>
-    createApp({
-      setup() {
-        const walks = ref([]);
-        const message = ref('');
-        const error = ref('');
-        const user = 3;
+    Vue.createApp({
+      data() {
+        return {
+          walks: [],
+          message: '',
+          error: '',
+          currentUser: null
+        };
+      },
 
         async function loadWalkRequests() {
           try {
