@@ -19,10 +19,10 @@
             <div class="mt-5">
               <h2 class="text-center mb-4 text-primary">All Registered Dogs</h2>
               <div v-if="dogsLoading" class="text-center">
-                <span class="visually-hidden">Loading dogs...</span>
+                <div class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading dogs...</span>
+                </div>
               </div>
-              <p class="mt-2">Loading dogs and photos...</p>
-            </div>
 
             <!-- Error messages-->
             <div v-if="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
