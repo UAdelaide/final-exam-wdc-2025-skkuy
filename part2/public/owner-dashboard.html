@@ -85,6 +85,7 @@
             location: ''
           },
           walks: [],
+          userDogs
           message: '',
           error: '',
         };
@@ -116,7 +117,7 @@
             if (!res.ok) throw new Error(result.error || 'Error submitting walk request');
             this.message = result.message;
             this.error = '';
-            
+
             this.form = {
               dog_id: '',
               requested_time: '',
