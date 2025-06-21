@@ -116,16 +116,12 @@
         async loadout() {
           try {
             console.log('Logging out...');
-            
+
             const res = await fetch('/api/users/logout', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' }
             });
             if (res.ok) {
-              // Clear local state
-              walks.value = [];
-              message.value = '';
-              error.value = '';
               // Redirect to the login homepage immediately
               window.location.href = 'index.html';
             } else {
