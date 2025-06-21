@@ -57,14 +57,12 @@
       data(){
                 return {
           loginForm,
-          errorMessage,
+          errorMessage: '',
           isLoading,
           successMessage,
           login
         };
-        const errorMessage = ref('');
-        const successMessage = ref('');
-        const isLoading = ref(false);
+
 
         const loginForm = ref({
           username: '',
