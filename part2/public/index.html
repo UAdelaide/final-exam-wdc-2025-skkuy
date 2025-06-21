@@ -147,6 +147,12 @@
           }
         },
 
+        //Login Handler Functions
+        async login(){
+          this.isLoading = true;
+          this.errorMessage = '';
+          this.successMessage = '';
+
         async loadRandomPhotos() {
           for (let i = 0; i < this.dogs.length; i++) {
             try {
@@ -182,11 +188,7 @@
         },
 
 
-        //Login Handler Functions
-        async login(){
-          this.isLoading = true;
-          this.errorMessage = '';
-          this.successMessage = '';
+
 
           try {
             const response = await fetch('/api/users/login', {
