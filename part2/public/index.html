@@ -95,7 +95,7 @@
                 }
               }, 1000);
             }else {
-                errorMessage.value = data.error || 'Login failed. Please check your credentials.';
+                this.errorMessage = data.error || 'Login failed. Please check your credentials.';
             }
           } catch (error) {
             console.error('Login error:', error);
