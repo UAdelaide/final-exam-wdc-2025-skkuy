@@ -165,7 +165,14 @@
           }
         },
 
-        
+        getBadgeClass(size) {
+          switch(size) {
+            case 'small': return 'bg-success';
+            case 'medium': return 'bg-warning';
+            case 'large': return 'bg-danger';
+            default: return 'bg-secondary';
+          }
+        },
 
         handleImageError(index) {
           if (this.dogs[index]) {
