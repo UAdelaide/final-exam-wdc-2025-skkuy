@@ -100,7 +100,7 @@
             }
           } catch (error) {
             console.error('Login error:', error);
-            this.errorMessage.value = 'Network error. Please try again later.';
+            this.errorMessage = 'Network error. Please try again later.';
           } finally {
             isLoading.value = false;
           }
