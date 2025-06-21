@@ -101,7 +101,7 @@
             console.error('Login error:', error);
             this.errorMessage = 'Network error. Please try again later.';
           } finally {
-            isLoading.value = false;
+            this.isLoading = false;
           }
         }
 
