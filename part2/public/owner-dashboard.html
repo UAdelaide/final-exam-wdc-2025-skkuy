@@ -132,7 +132,7 @@
               error.value = 'Logout failed';
             }
           } catch (err) {
-            error.value = 'Network error during logout';
+            error.value = 'Logout failed';
           }
         }
 
@@ -146,6 +146,7 @@
           message,
           error,
           submitWalkRequest
+          s
         };
       }
     }).mount('#app');
