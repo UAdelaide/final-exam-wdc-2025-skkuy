@@ -74,8 +74,14 @@
             </p>
 
             <!-- Error and success messages -->
-            <div v-if="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
-            <div v-if="successMessage" class="alert alert-success">{{ successMessage }}</div>
+            <div v-if="errorMessage" class="alert alert-danger alert-dismissible fade show">
+              {{ errorMessage }}
+              <button type="button" class="btn-close" @click="errorMessage = ''"></button>
+            </div>
+            <div v-if="successMessage" class="alert alert-success alert-dismissible fade show">
+              {{ successMessage }}
+              <button type="button" class="btn-close" @click="successMessage = ''"></button>
+            </div>
 
             <!-- Login Form -->
             <form @submit.prevent="login">
