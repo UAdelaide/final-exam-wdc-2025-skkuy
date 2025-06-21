@@ -95,10 +95,11 @@
         await this.loadUserDogs();//  Get the user's dog when the page loads
       },
       methods: {
+        // Get the current user's dog
         async loadWalkRequests() {
           try {
             const res = await fetch('/api/walks');
-            if (!res.ok) throw new Error('Failed to load walk requests');
+            if (res.ok) throw new Error('Failed to load walk requests');
             this.walks = await res.json();
           } catch (err) {
             this.error = err.message;
