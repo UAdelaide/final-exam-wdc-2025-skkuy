@@ -141,7 +141,7 @@
             const photosResponse = await fetch(`https://dog.ceo/api/breeds/image/random/${dogs.length}`);
             const photosData = await photosResponse.json();
 
-            // 合并数据
+            // Merge data
             this.allDogs = dogs.map((dog, index) => ({
               ...dog,
               randomPhoto: photosData.message[index] || 'https://via.placeholder.com/80x80?text=No+Photo'
@@ -155,7 +155,7 @@
           }
         },
 
-        // 登录方法
+        // login
         async login() {
           this.isLoading = true;
           this.errorMessage = '';
