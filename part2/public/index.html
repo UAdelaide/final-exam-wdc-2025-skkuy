@@ -164,7 +164,11 @@
           }
         },
 
-        handle
+        handleImageError(index) {
+          if (this.dogs[index]) {
+            this.dogs[index].photo = 'https://via.placeholder.com/80x80?text=No+Image';
+          }
+        },
 
 
         //Login Handler Functions
