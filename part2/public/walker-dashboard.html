@@ -52,7 +52,7 @@
       },
       async mounted() {
         await this.loadWalkRequests();
-        await
+        await this.get(); // Load user data if needed
       },
       methods: {
         async loadWalkRequests() {
